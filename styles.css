@@ -576,3 +576,9 @@ body.about-page a,body.about-page button{cursor:none}
 @media(prefers-reduced-motion:reduce){
   .about-reveal{transition:none!important}
 }
+
+/* Keep illustrations below the copy so longer text never overlaps them */
+.care-grid article,.outside-grid article{display:flex;flex-direction:column}
+.care-grid .card-illustration,.outside-grid .outside-illustration{position:static;margin-top:auto;padding-top:18px;align-self:flex-start}
+.care-grid article:nth-child(3) .card-illustration{align-self:flex-end}
+.care-grid article{padding-bottom:20px}
