@@ -11,7 +11,7 @@ if(drawer&&btn){
   const mobile=()=>window.matchMedia('(max-width:760px)').matches;
   setDrawer(!mobile());
   btn.addEventListener('click',()=>setDrawer(drawer.classList.contains('open')?false:true));
-  document.addEventListener('keydown',e=>{if(e.key==='Escape')setDrawer(false)});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&mobile())setDrawer(false)});
   document.addEventListener('click',e=>{
     if(mobile()&&drawer.classList.contains('open')&&!drawer.contains(e.target)&&!btn.contains(e.target))setDrawer(false);
   });
@@ -33,8 +33,8 @@ if(document.body.classList.contains('about-page') && !window.matchMedia('(pointe
   cursor.setAttribute('aria-hidden','true');
   document.body.appendChild(cursor);
   let cx=window.innerWidth/2,cy=window.innerHeight/2,tx=cx,ty=cy;
-  const move=()=>{cx+=(tx-cx)*.18;cy+=(ty-cy)*.18;cursor.style.left=cx+'px';cursor.style.top=cy+'px';requestAnimationFrame(move)};
-  document.addEventListener('mousemove',e=>{tx=e.clientX;ty=e.clientY});
+  let raf=0;const move=()=>{cx+=(tx-cx)*.18;cy+=(ty-cy)*.18;cursor.style.left=cx+'px';cursor.style.top=cy+'px';raf=(Math.abs(tx-cx)>.1||Math.abs(ty-cy)>.1)?requestAnimationFrame(move):0};
+  document.addEventListener('mousemove',e=>{tx=e.clientX;ty=e.clientY;if(!raf)raf=requestAnimationFrame(move)});
   document.querySelectorAll('a,button,.chips b,.care-grid article,.outside-grid article').forEach(el=>{
     el.addEventListener('mouseenter',()=>cursor.classList.add('is-hover'));
     el.addEventListener('mouseleave',()=>cursor.classList.remove('is-hover'));
