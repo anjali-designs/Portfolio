@@ -606,3 +606,6 @@ body.about-page a,body.about-page button{cursor:none}
   .drawer-close:hover{transform:translateX(-2px);opacity:.85}
   .drawer-close svg{width:20px;height:20px}
 }
+
+/* Accordions can be very tall; never hide them behind the reveal fade */
+.accordion.reveal{opacity:1;transform:none}

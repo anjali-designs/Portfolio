@@ -33,7 +33,7 @@ if(drawer&&btn){
     ['pointerdown','keydown'].forEach(ev=>document.addEventListener(ev,()=>clearTimeout(hint),{once:true}));
   }
 }
-const observer=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target)}})},{threshold:.05,rootMargin:'0px 0px -20px'});
+const observer=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target)}})},{threshold:0,rootMargin:'0px 0px -20px'});
 document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
 document.querySelectorAll('.accordion').forEach(d=>{const b=d.querySelector('summary b');if(b){b.textContent=d.open?'×':'+';d.addEventListener('toggle',()=>b.textContent=d.open?'×':'+')}});
 
