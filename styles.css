@@ -19,7 +19,7 @@
   --maxw:1440px;      /* hard page cap */
   --drawer:380px;     /* sidebar width (desktop) */
   --gutter:56px;      /* main content side padding (desktop) */
-  --content:720px;    /* readable column width for case studies */
+  --content:1000px;   /* max case-study column; fills the space beside the sidebar */
 }
 
 *{box-sizing:border-box}
@@ -587,3 +587,7 @@ body.about-page a,body.about-page button{cursor:none}
 .care-grid .card-illustration,.outside-grid .outside-illustration{position:static;margin-top:auto;padding-top:18px;align-self:flex-start}
 .care-grid article:nth-child(3) .card-illustration{align-self:flex-end}
 .care-grid article{padding-bottom:20px}
+
+/* Breathing room between a section's copy and the diagram strip that follows */
+.h-scroll.flows{margin-top:32px}
+.case-section .case-img:first-child,.case-section>.h-scroll{margin-top:28px}
