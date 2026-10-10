@@ -21,10 +21,21 @@ if(drawer&&btn){
     if(m!==wasMobile){wasMobile=m;setDrawer(!m);}
   });
   drawer.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{if(mobile())setDrawer(false)}));
+  const closeBtn=drawer.querySelector('.drawer-close');
+  if(closeBtn)closeBtn.addEventListener('click',()=>setDrawer(false));
+  /* Mobile: show the sidebar briefly on first load so visitors know it exists */
+  let seen=false;
+  try{seen=sessionStorage.getItem('drawerHint')==='1'}catch(e){}
+  if(mobile()&&!seen){
+    try{sessionStorage.setItem('drawerHint','1')}catch(e){}
+    setDrawer(true);
+    const hint=setTimeout(()=>setDrawer(false),1800);
+    ['pointerdown','keydown'].forEach(ev=>document.addEventListener(ev,()=>clearTimeout(hint),{once:true}));
+  }
 }
 const observer=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target)}})},{threshold:.05,rootMargin:'0px 0px -20px'});
 document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
-document.querySelectorAll('.accordion').forEach(d=>{const b=d.querySelector('summary b');if(b)d.addEventListener('toggle',()=>b.textContent=d.open?'×':'+')});
+document.querySelectorAll('.accordion').forEach(d=>{const b=d.querySelector('summary b');if(b){b.textContent=d.open?'×':'+';d.addEventListener('toggle',()=>b.textContent=d.open?'×':'+')}});
 
 /* About page custom cursor — intentionally scoped to About only. */
 if(document.body.classList.contains('about-page') && !window.matchMedia('(pointer:coarse)').matches){
