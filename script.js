@@ -37,7 +37,7 @@ const observer=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(ent
 document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
 document.querySelectorAll('.accordion').forEach(d=>{const b=d.querySelector('summary b');if(b){b.textContent=d.open?'×':'+';d.addEventListener('toggle',()=>b.textContent=d.open?'×':'+')}});
 
-/* About page custom cursor — intentionally scoped to About only. */
+/* About page custom cursor: intentionally scoped to About only. */
 if(document.body.classList.contains('about-page') && !window.matchMedia('(pointer:coarse)').matches){
   const cursor=document.createElement('div');
   cursor.className='about-cursor';

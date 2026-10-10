@@ -1,5 +1,5 @@
 /* ============================================================
-   Anjali — Portfolio
+   Anjali: Portfolio
    Shell: centered 1440px cap · sticky sidebar drawer · fluid main
    ============================================================ */
 
@@ -42,7 +42,7 @@ body{
   line-height:1.55;
   -webkit-font-smoothing:antialiased;
 }
-/* Site background — soft warm gradient, fixed to the viewport (no image) */
+/* Site background: soft warm gradient, fixed to the viewport (no image) */
 body::before{
   content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;
   background:
@@ -326,7 +326,7 @@ body.case-page .topbar{max-width:var(--content);margin-left:auto;margin-right:au
 .live-link{margin-top:22px!important}
 .live-link a{color:var(--orange);text-decoration:underline;text-underline-offset:3px}
 
-/* Shared card surface — one look across every case-study card group */
+/* Shared card surface: one look across every case-study card group */
 .process-grid article,
 .roles-grid article,
 .number-card,
@@ -340,7 +340,7 @@ body.case-page .topbar{max-width:var(--content);margin-left:auto;margin-right:au
   border-radius:12px;
 }
 
-/* OBSERVATIONS · FUTURES · DESIGN DECISIONS — plain numbered list, no cards */
+/* OBSERVATIONS · FUTURES · DESIGN DECISIONS: plain numbered list, no cards */
 .learning-grid,.learning-grid.four,
 .future-grid,.future-grid.four{grid-template-columns:1fr 1fr;gap:28px 48px}
 .decision-grid{grid-template-columns:1fr;gap:26px}
@@ -449,7 +449,7 @@ body.case-page .topbar{max-width:var(--content);margin-left:auto;margin-right:au
 }
 
 /* ============================================================
-   About Me — whimsical page (scoped; does not alter case studies)
+   About Me: whimsical page (scoped; does not alter case studies)
    ============================================================ */
 body.about-page{
   background:
