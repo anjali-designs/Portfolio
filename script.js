@@ -45,3 +45,12 @@ if(document.body.classList.contains('about-page')){
   const aboutObserver=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');aboutObserver.unobserve(entry.target)}})},{threshold:.08,rootMargin:'0px 0px -35px'});
   document.querySelectorAll('.about-reveal').forEach(el=>aboutObserver.observe(el));
 }
+
+/* Smooth scroll site-wide (Lenis). Skipped for reduced-motion users; the drawer and horizontal scrollers keep native scrolling. */
+if(window.Lenis&&!window.matchMedia('(prefers-reduced-motion:reduce)').matches){
+  const lenis=new Lenis({duration:1.1,easing:t=>Math.min(1,1.001-Math.pow(2,-10*t)),wheelMultiplier:1,smoothWheel:true});
+  const raf=t=>{lenis.raf(t);requestAnimationFrame(raf)};
+  requestAnimationFrame(raf);
+  const syncDrawerLock=()=>{document.body.classList.contains('drawer-open')&&window.matchMedia('(max-width:760px)').matches?lenis.stop():lenis.start()};
+  new MutationObserver(syncDrawerLock).observe(document.body,{attributes:true,attributeFilter:['class']});
+}
