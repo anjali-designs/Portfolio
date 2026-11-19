@@ -113,9 +113,14 @@
   const layers = $$("[data-depth]");
   let mx = window.innerWidth / 2, my = window.innerHeight / 2;
   const pTarget = { x: 0, y: 0 }, pNow = { x: 0, y: 0 };
+  let heroVisible = true;
+  if (hero && "IntersectionObserver" in window) new IntersectionObserver((es) => { heroVisible = es[0].isIntersecting; hero.classList.toggle("paused", !heroVisible); }).observe(hero);
   const applyParallax = () => {
-    pNow.x += (pTarget.x - pNow.x) * 0.07;
-    pNow.y += (pTarget.y - pNow.y) * 0.07;
+    if (!heroVisible || !layers.length) return;
+    const ex = pTarget.x - pNow.x, ey = pTarget.y - pNow.y;
+    if (Math.abs(ex) < 0.0005 && Math.abs(ey) < 0.0005) return;
+    pNow.x += ex * 0.07;
+    pNow.y += ey * 0.07;
     layers.forEach(l => {
       const d = parseFloat(l.dataset.depth);
       l.style.transform = `translate(${(-pNow.x * d / S).toFixed(2)}px, ${(-pNow.y * d * 0.6 / S).toFixed(2)}px) scale(1.035)`;
@@ -282,12 +287,14 @@
     setTimeout(() => cat.classList.remove(cls), ms);
   };
 
+  let VW = window.innerWidth, VH = window.innerHeight;
+  window.addEventListener("resize", () => { VW = window.innerWidth; VH = window.innerHeight; }, { passive: true });
   window.addEventListener("mousemove", e => {
     const jump = Math.abs(e.clientX - mx) + Math.abs(e.clientY - my);
     mx = e.clientX; my = e.clientY;
     cs.last = Date.now();
-    pTarget.x = (mx / window.innerWidth) * 2 - 1;
-    pTarget.y = (my / window.innerHeight) * 2 - 1;
+    pTarget.x = (mx / VW) * 2 - 1;
+    pTarget.y = (my / VH) * 2 - 1;
     if (cat && catOn && jump > 140 && !cs.hopLock && cs.mode !== "sleep") {
       cs.hopLock = true;
       playOnce("hop", 450);
@@ -296,6 +303,7 @@
   }, { passive: true });
   document.addEventListener("mouseleave", () => { pTarget.x = 0; pTarget.y = 0; });
 
+  let pupils = null, lastPupil = "", lastCatTf = "";
   let roll = null, nextRoll = performance.now() + 9000 + Math.random() * 8000;
   function rollEyes() { roll = { t0: performance.now() }; }
   const setNight = () => { if (cat) cat.classList.toggle("night", isNight()); };
@@ -316,8 +324,11 @@
       const dx = mx - hx, dy = my - hy, d = Math.hypot(dx, dy) || 1, m = Math.min(1, d / 160);
       px = (dx / d) * 1.15 * m * (cs.left ? -1 : 1); py = (dy / d) * 0.9 * m;
     }
-    const tf = `translate(${px.toFixed(2)}px, ${py.toFixed(2)}px)`;
-    cat.querySelectorAll(".pupil").forEach((el) => { el.style.transform = tf; });
+    const tf = `translate(${px.toFixed(1)}px, ${py.toFixed(1)}px)`;
+    if (tf === lastPupil) return;
+    lastPupil = tf;
+    if (!pupils) pupils = Array.from(cat.querySelectorAll(".pupil"));
+    pupils.forEach((el) => { el.style.transform = tf; });
   };
   const loop = () => {
     if (!reduce && fine) applyParallax();
@@ -327,8 +338,8 @@
       let tx, ty;
       if (cs.override && now < cs.override.until) { tx = cs.override.x; ty = cs.override.y; }
       else { tx = mx < catCx ? mx + 24 : mx - 150; ty = my - 40; }
-      tx = Math.max(0, Math.min(window.innerWidth - 120, tx));
-      ty = Math.max(0, Math.min(window.innerHeight - 80, ty));
+      tx = Math.max(0, Math.min(VW - 120, tx));
+      ty = Math.max(0, Math.min(VH - 80, ty));
       const dx = tx - cs.x, dy = ty - cs.y;
       let moving = false;
       if (!cs.petting && Math.hypot(dx, dy) > 6) {
@@ -341,8 +352,9 @@
       setMode(moving ? "walk" : (now - cs.last > 9000 && !cs.petting ? "sleep" : "sit"));
       const left = moving ? (Math.abs(dx) > 3 ? dx < 0 : cs.left) : mx < cs.x + 60;
       if (left !== cs.left) { cs.left = left; cat.classList.toggle("left", left); }
-      cat.style.transform = `translate3d(${cs.x.toFixed(1)}px, ${cs.y.toFixed(1)}px, 0)`;
-      lookAt();
+      const ctf = `translate3d(${cs.x.toFixed(1)}px, ${cs.y.toFixed(1)}px, 0)`;
+      if (ctf !== lastCatTf) { cat.style.transform = ctf; lastCatTf = ctf; }
+      if (cs.mode !== "sleep") lookAt();
     }
     requestAnimationFrame(loop);
   };
@@ -416,14 +428,17 @@
       el.addEventListener("mouseenter", () => { on = true; vc.classList.add("on"); vc.textContent = el.matches(".project, .next") ? "View project" : "View"; vc.style.fontSize = el.matches(".project, .next") ? "12px" : "14px"; });
       el.addEventListener("mouseleave", () => { on = false; vc.classList.remove("on"); });
     });
-    window.addEventListener("mousemove", (e) => { vtx = e.clientX; vty = e.clientY; if (vx < -100) { vx = vtx; vy = vty; } }, { passive: true });
+    let running = false;
     const tick = () => {
       vx += (vtx - vx) * 0.22; vy += (vty - vy) * 0.22;
       scale += ((on ? 1 : 0.4) - scale) * 0.2;
       vc.style.transform = `translate3d(${vx.toFixed(1)}px, ${vy.toFixed(1)}px, 0) scale(${scale.toFixed(3)})`;
+      if (Math.abs(vtx - vx) + Math.abs(vty - vy) < 0.3 && Math.abs((on ? 1 : 0.4) - scale) < 0.002) { running = false; return; }
       requestAnimationFrame(tick);
     };
-    requestAnimationFrame(tick);
+    const wake = () => { if (!running) { running = true; requestAnimationFrame(tick); } };
+    window.addEventListener("mousemove", (e) => { vtx = e.clientX; vty = e.clientY; if (vx < -100) { vx = vtx; vy = vty; } if (on || scale > 0.41) wake(); }, { passive: true });
+    viewTargets.forEach((el) => { el.addEventListener("mouseenter", wake); el.addEventListener("mouseleave", wake); });
   }
 
   /* ---------- Lightbox: view pictures, go back and forth ---------- */
@@ -545,4 +560,11 @@
     track.querySelectorAll("img").forEach((i) => i.addEventListener("load", sync));
     sync();
   });
+})();
+
+/* Pause decorative loops when they are off screen */
+(() => {
+  if (!("IntersectionObserver" in window)) return;
+  const io = new IntersectionObserver((es) => es.forEach((e) => e.target.classList.toggle("paused", !e.isIntersecting)), { rootMargin: "100px" });
+  document.querySelectorAll(".line-scroll, .marquee, .viz").forEach((el) => io.observe(el));
 })();

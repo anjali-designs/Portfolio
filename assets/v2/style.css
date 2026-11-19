@@ -87,8 +87,8 @@ p { margin: 0; }
   display: flex; align-items: center; gap: 2px;
   padding: 6px; border-radius: 999px;
   background: rgba(28, 11, 13, 0.55);
-  backdrop-filter: blur(18px) saturate(160%);
-  -webkit-backdrop-filter: blur(18px) saturate(160%);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.09), 0 14px 40px rgba(0, 0, 0, 0.45);
   transition: background .4s var(--ease);
 }
@@ -1050,3 +1050,13 @@ body.lb-lock { overflow: hidden; }
 @media (min-width: 901px) {
   .work-grid > .project:first-child { grid-column: 1 / -1; display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); gap: clamp(24px, 4vw, 56px); align-items: center; }
 }
+
+/* ---------- Performance ---------- */
+.paused, .paused * { animation-play-state: paused !important; }
+.cat, .view-cursor { will-change: transform; }
+.pol { will-change: transform; }
+@keyframes glow { 0%, 100% { opacity: .8; } 50% { opacity: 1; } }
+/* Card thumbnails: no auto-scrolling pages */
+.shot.page img, .project:hover .shot.page img, .next:hover .shot.page img { object-fit: cover; object-position: center top; animation: none; transition: transform 1s var(--ease), filter .6s var(--ease); }
+[data-depth] { will-change: transform; }
+@media (hover: hover) and (pointer: fine) { .shot .go { display: none; } }
