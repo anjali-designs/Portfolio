@@ -1,19 +1,407 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#080303"><meta name="description" content="Portfolio of Anjali Pramanik, a product designer (UI/UX) with 3 years of experience designing AI tools and SaaS platforms."><meta property="og:type" content="website"><meta property="og:title" content="Anjali Pramanik | Product Designer (UI/UX)"><meta property="og:description" content="Portfolio of Anjali Pramanik, a product designer (UI/UX) with 3 years of experience designing AI tools and SaaS platforms."><meta name="twitter:card" content="summary"><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23080303'/%3E%3Ctext x='32' y='44' font-size='34' font-family='Sora,Arial' font-weight='700' text-anchor='middle' fill='%23ff5a2a'%3EA%3C/text%3E%3C/svg%3E"><title>Anjali Pramanik | Product Designer (UI/UX)</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet"><link rel="stylesheet" href="styles.css"></head><body class="home-page"><div class="site"><div class="sidebar-slot"><aside class="drawer" id="drawer" data-lenis-prevent aria-label="Site navigation">
-      <div class="drawer-inner"><button class="drawer-close" type="button" aria-label="Close navigation"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="20" y1="12" x2="4" y2="12"/><polyline points="10 6 4 12 10 18"/></svg></button>
-        <img class="profile" src="assets/Site wide images/Profile picture.webp" alt="Anjali Pramanik">
-        <div class="bio"><h2>Hi, I am Anjali Pramanik</h2><p>Product designer with 3 years of experience turning messy, ambiguous problems into structured, usable products. Currently focused on AI tools and SaaS platforms.</p></div>
-        <nav class="drawer-nav"><a href="index.html">Home</a><a href="about.html">About</a><a href="assets/Anjali_Pramanik_Resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a></nav>
-        <div class="social"><a href="https://www.linkedin.com/in/anjalipramanik" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" title="LinkedIn">in.</a><a href="https://www.behance.net/uiuxanjali" target="_blank" rel="noopener noreferrer" aria-label="Behance" title="Behance">Be</a></div>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Anjali Pramanik, Product Designer</title>
+  <meta name="description" content="Anjali Pramanik is a product designer in Bengaluru working on AI tools, SaaS dashboards and websites.">
+  <meta property="og:title" content="Anjali Pramanik, Product Designer">
+  <meta property="og:description" content="AI tools, SaaS dashboards and websites, designed from a desk with four cats on it.">
+  <meta property="og:image" content="https://anjalidesigns.netlify.app/assets/v2/img/og-desk.jpg">
+  <meta name="theme-color" content="#0B0707">
+  <link rel="icon" href="assets/v2/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Geist:wght@300..700&display=swap">
+  <link rel="preload" as="image" href="assets/v2/img/desk-render-2560.webp" media="(min-width: 901px)">
+  <link rel="stylesheet" href="assets/v2/style.css?v=2300">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <div class="nav-wrap">
+    <nav class="nav" aria-label="Main">
+      <a class="logo" href="index.html" aria-label="Anjali Pramanik, home">
+        <svg viewBox="0 0 46 34" aria-hidden="true">
+          <path class="ear ear-l" d="M6 14 L9 2 L16 11 Z" fill="#FF4A3D"/>
+          <path class="ear ear-r" d="M30 11 L37 2 L40 14 Z" fill="#FF4A3D"/>
+          <text x="23" y="31" text-anchor="middle" font-size="22" fill="#F4ECE9">AP</text>
+        </svg>
+      </a>
+      <a href="index.html" aria-current="page">Home</a>
+      <a href="#work">Work</a>
+      <a href="me.html">Me</a>
+      <span class="nav-sep" aria-hidden="true"></span>
+      <button class="mail" type="button" data-copy="anjali.p.designs@gmail.com" aria-label="Copy email anjali.p.designs@gmail.com">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+        <span class="addr">anjali.p.designs@gmail.com</span>
+        <span class="copied">Copied, the cat will deliver it</span>
+      </button>
+    </nav>
+  </div>
+
+  <main id="main">
+    <!-- Hero: my desk (3D render). Everything inside .stage uses the render's 2560 x 1440 coordinates. -->
+    <section class="hero" id="hero" aria-label="My desk: sticky notes on the wall, a red sunset lamp, four cat figurines on the monitor, a laptop on a stand, keyboard, journal, a plant and a mug of water.">
+      <div class="stage" id="stage">
+        <div class="layer" data-depth="12">
+          <div class="photo" role="img" aria-label="Anjali's desk at night"></div>
+          <div class="lamp-glow" aria-hidden="true"></div>
+          <div class="lights-out" aria-hidden="true"></div>
+
+          <div class="screen monitor" aria-hidden="true">
+            <div class="tabs">
+              <span class="tab">Job tracker</span>
+              <span class="tab">Lumi | Anjali Pramanik</span>
+              <span class="tab on">Portfolio v2</span>
+            </div>
+            <div class="subbar"><span>inspo, but make it mine</span><span>anjali’s feed</span></div>
+            <div class="feed" id="feed"></div>
+          </div>
+
+          <div class="screen laptop" aria-hidden="true">
+            <span class="moon"></span>
+            <span class="clock" id="clock">--:--</span>
+            <p>sleepy girl, busy life</p>
+            <span class="taskbar"></span>
+          </div>
+
+          <button class="hot" style="left:0; top:0; width:400px; height:820px" data-say="notes" aria-label="Sticky note wall"></button>
+          <button class="hot" style="left:1080px; top:518px; width:190px; height:52px" data-say="cats" aria-label="Cat figurines on the monitor"></button>
+          <button class="hot" style="left:900px; top:0; width:1300px; height:420px" data-say="lamp" aria-label="Turn the sunset lamp off" id="lampBtn"></button>
+          <button class="hot" style="left:1740px; top:780px; width:130px; height:310px" data-say="water" aria-label="Take a sip of water"></button>
+        </div>
+
+        <div class="layer labels" data-depth="26" id="labels" aria-hidden="true"></div>
       </div>
-    </aside></div><main class="main"><header class="topbar"><button class="drawer-btn" id="drawerBtn" aria-label="Toggle navigation" aria-controls="drawer" aria-expanded="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><line x1="9" y1="4" x2="9" y2="20"/></svg></button><a class="selected-label" href="index.html">Selected Works</a><a class="back" href="index.html">← BACK</a></header><section class="works">
-<a class="work-card reveal" href="lumi.html"><div class="work-thumb"><img src="assets/Main Page/lumi.webp" alt="Lumi project"></div><div class="work-info"><h2>Lumi</h2><p>LUMI is an AI-powered knowledge management platform I'm currently designing at Novel Office, a conversational assistant that helps employees navigate scenario-based questions LMS training doesn't cover.</p><span>View →</span></div></a>
-<a class="work-card reveal" href="meeting-room.html"><div class="work-thumb"><img src="assets/Main Page/meeting room.webp" alt="Meeting Room Booking System project"></div><div class="work-info"><h2>Meeting Room Booking System</h2><p>A workplace booking experience designed to help users quickly discover suitable meeting rooms, check availability, and complete reservations without unnecessary friction.</p><span>View →</span></div></a>
-<a class="work-card reveal" href="novel-office.html"><div class="work-thumb"><img src="assets/Main Page/noveloffice.webp" alt="Novel Office project"></div><div class="work-info"><h2>Novel Office Redesign</h2><p>Novel Office is a workspace discovery platform that helps businesses explore and enquire about office spaces across locations.</p><span>View →</span></div></a></section><section class="expertise reveal" id="expertise"><h2 class="section-label">EXPERTISE</h2><div class="expertise-list">
-<div><h3>Product Design</h3><p>I enjoy turning complex ideas into intuitive experiences. From mapping user flows to refining the final interface, I focus on creating products that feel simple, purposeful, and easy to use.</p></div>
-<div><h3>UX research</h3><p>Good design starts with understanding people. I use interviews, usability testing, competitor analysis, and feedback to validate ideas and make informed design decisions, not assumptions.</p></div>
-<div><h3>UI &amp; Interaction Design</h3><p>I care about the little details that shape a great experience, which is clear hierarchy, thoughtful interactions, accessibility, and interfaces that feel familiar without being predictable.</p></div>
-<div><h3>Design systems</h3><p>Consistency makes products easier to build and easier to use. I enjoy creating reusable components and scalable systems that help teams design and ship with confidence.</p></div>
-</div></section><footer class="footer reveal"><div class="footer-title">Contact</div><div class="footer-art" style="background-image:url('assets/Site wide images/Background Decoration.webp')"><div class="contact">
-<a href="tel:+917004689616"><svg class="contact-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.9.33 1.78.62 2.63a2 2 0 0 1-.45 2.11L8 9.73a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.85.29 1.73.5 2.63.62A2 2 0 0 1 22 16.92z"/></svg><span>7004689616</span></a>
-<a href="mailto:anjalipramanikofficial@gmail.com"><svg class="contact-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg><span>anjalipramanikofficial@gmail.com</span></a>
-</div></div></footer></main></div><script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script><script src="script.js"></script></body></html>
+      <div class="hero-fade"></div>
+    </section>
+
+    <!-- Intro -->
+    <section class="intro">
+      <div class="wrap">
+        <h1 class="rise" style="--d:.1s"><span class="h1-sub">Hi, I’m Anjali,</span><span class="h1-main">Designing for people, thinking in systems</span></h1>
+        <div class="intro-side rise" style="--d:.25s">
+          <p class="lead">Product designer with 3 years at Novel Office. I work across AI, SaaS and web, bringing together research, structure and visual design to create products that work as beautifully as they look.</p>
+          <div class="btns">
+            <a class="btn primary" href="#work">See my work
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+            </a>
+            <a class="btn" href="me.html">Meet me</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- My work -->
+    <section class="section" id="work">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <h2>My work</h2>
+          <p class="lead">Three projects from Novel Office, from first sketch to dev handoff.</p>
+        </div>
+        <div class="grid-2 work-grid">
+          <a class="project reveal" href="lumi.html">
+            <div class="shot">
+              <img src="https://anjalidesigns.netlify.app/assets/Lumi%20Screens/Employee%20Dashboard.webp" alt="Lumi contributor dashboard" loading="lazy">
+              <span class="go">Read case study</span>
+            </div>
+            <div class="info">
+              <h3>Lumi</h3>
+              <p>An AI assistant that only answers from knowledge people have approved. 60+ screens across 3 roles, plus a light and dark design system.</p>
+              <span class="meta">AI product · Internal tool · Phase 1 designed</span>
+            </div>
+          </a>
+
+          <a class="project reveal" style="--d:.08s" href="novel-office.html">
+            <div class="shot page">
+              <img src="https://anjalidesigns.netlify.app/assets/Novel%20Office/screencapture-noveloffice-in-2026-04-22-14_32_54%202.webp" alt="Novel Office website home page" loading="lazy">
+              <span class="go">Read case study</span>
+            </div>
+            <div class="info">
+              <h3>Novel Office website</h3>
+              <p>Rebuilt the structure and design of a workspace site with 5 solution pages and 7 location pages. Pages per session went from 1.21 to 1.49.</p>
+              <span class="meta">Website · IA · Research · Live</span>
+            </div>
+          </a>
+
+          <a class="project reveal" style="--d:.08s" href="meeting-room.html">
+            <div class="shot">
+              <img src="https://anjalidesigns.netlify.app/assets/Meeting%20room/MacBook%20Pro%2016_%20-%2011%201.webp" alt="Meeting room booking screen" loading="lazy">
+              <span class="go">Read case study</span>
+            </div>
+            <div class="info">
+              <h3>Meeting Room Booking System</h3>
+              <p>I mapped the flows and designed the screens: find, check and book a room across 7 locations in a few taps.</p>
+              <span class="meta">Workplace tool · User flows · Demo phase</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Passion projects -->
+    <section class="section" id="passion" hidden>
+      <div class="wrap">
+        <div class="section-head reveal">
+          <h2>Passion projects</h2>
+          <p class="lead">Things I make because nobody asked me to.</p>
+        </div>
+        <div class="grid-2">
+          <article class="passion reveal">
+            <svg class="art" viewBox="0 0 96 96" fill="none" aria-hidden="true">
+              <circle cx="48" cy="52" r="34" stroke="rgba(244,236,233,.25)" stroke-width="8"/>
+              <path d="M48 18a34 34 0 0 1 32 45" stroke="#FF4A3D" stroke-width="8" stroke-linecap="round"/>
+              <path d="M40 8h16M48 8v8" stroke="#F4ECE9" stroke-width="5" stroke-linecap="round"/>
+              <path d="M48 52V36" stroke="#F4ECE9" stroke-width="5" stroke-linecap="round"/>
+            </svg>
+            <h3>Session Tracker</h3>
+            <!-- TODO: one line on what Session Tracker does -->
+            <p>[One line on what Session Tracker does and who it’s for]</p>
+            <span class="meta">Self-initiated · Product design</span>
+          </article>
+          <article class="passion alt reveal" style="--d:.08s">
+            <svg class="art" viewBox="0 0 96 96" fill="none" aria-hidden="true">
+              <path d="M14 46L48 16l34 30" stroke="#F4ECE9" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M24 40v40h48V40" stroke="#F4ECE9" stroke-width="6" stroke-linejoin="round"/>
+              <path d="M48 70c-10-7-14-12-14-17a7 7 0 0 1 14-2 7 7 0 0 1 14 2c0 5-4 10-14 17z" fill="#FF4A3D"/>
+            </svg>
+            <h3>Homeward</h3>
+            <!-- TODO: one line on what Homeward is about -->
+            <p>[One line on what Homeward is about]</p>
+            <span class="meta">Self-initiated · Mobile app</span>
+          </article>
+        </div>
+
+        <div class="thoughts reveal">
+          <div class="thoughts-top">
+            <div>
+              <h3>A Designer’s Thoughts</h3>
+              <p>My LinkedIn video series. Each episode breaks down one product design idea in under a minute.</p>
+            </div>
+            <a class="link-arrow" href="https://www.linkedin.com/in/anjalipramanik/recent-activity/all/" target="_blank" rel="noopener">Watch on LinkedIn
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg>
+            </a>
+          </div>
+          <div class="marquee" aria-label="Episodes">
+            <div class="marquee-track">
+              <span class="chip">Beyond the Happy Path</span>
+              <span class="chip">When the Interface Fails</span>
+              <span class="chip">Make It Feel Faster</span>
+              <span class="chip">Stop Making Users Think</span>
+              <span class="chip">The Product Has States Too</span>
+              <span class="chip">Are Users Actually Using Your Feature?</span>
+              <span class="chip">Design Doesn’t End in Figma</span>
+              <span class="chip">What Job Are You Actually Solving?</span>
+            </div>
+            <div class="marquee-track" aria-hidden="true">
+              <span class="chip">Beyond the Happy Path</span>
+              <span class="chip">When the Interface Fails</span>
+              <span class="chip">Make It Feel Faster</span>
+              <span class="chip">Stop Making Users Think</span>
+              <span class="chip">The Product Has States Too</span>
+              <span class="chip">Are Users Actually Using Your Feature?</span>
+              <span class="chip">Design Doesn’t End in Figma</span>
+              <span class="chip">What Job Are You Actually Solving?</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Expertise: hover or tap a skill to see it play out -->
+    <section class="section" id="expertise">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <h2>My expertise</h2>
+          <p class="lead">Hover a skill to see how I work.</p>
+        </div>
+        <div class="skills reveal" id="skills">
+          <div class="skill on">
+            <button class="skill-name" type="button" aria-expanded="true" aria-controls="sk-1">Product design</button>
+            <div class="skill-panel" id="sk-1">
+              <div class="viz v1" data-steps="5" data-step="0" aria-hidden="true"><svg viewBox="0 0 440 250" role="img" aria-label="A design moving from problem to flows, wireframe, UI and developer handoff"><rect width="440" height="250" rx="10" fill="#0D0D0D"/><line class="tl" data-k="0" x1="53" y1="26" x2="123" y2="26"/><line class="tl" data-k="1" x1="141" y1="26" x2="211" y2="26"/><line class="tl" data-k="2" x1="229" y1="26" x2="299" y2="26"/><line class="tl" data-k="3" x1="317" y1="26" x2="387" y2="26"/><circle class="nd" data-k="0" cx="44" cy="26" r="6"/><text class="tx" data-k="0" x="44" y="48" text-anchor="middle">Problem</text><circle class="nd" data-k="1" cx="132" cy="26" r="6"/><text class="tx" data-k="1" x="132" y="48" text-anchor="middle">Flows</text><circle class="nd" data-k="2" cx="220" cy="26" r="6"/><text class="tx" data-k="2" x="220" y="48" text-anchor="middle">Wireframe</text><circle class="nd" data-k="3" cx="308" cy="26" r="6"/><text class="tx" data-k="3" x="308" y="48" text-anchor="middle">UI</text><circle class="nd" data-k="4" cx="396" cy="26" r="6"/><text class="tx" data-k="4" x="396" y="48" text-anchor="middle">Handoff</text><g class="a0"><g class="note" style="transition-delay:0.00s"><g transform="translate(48 96) rotate(-5)"><rect width="96" height="62" rx="6" fill="#262626"/><rect x="10" y="12" width="58" height="4" rx="2" fill="#6B6B6B"/><rect x="10" y="24" width="72" height="4" rx="2" fill="#4A4A4A"/><rect x="10" y="36" width="40" height="4" rx="2" fill="#4A4A4A"/></g></g><g class="note" style="transition-delay:0.12s"><g transform="translate(172 118) rotate(2)"><rect width="96" height="62" rx="6" fill="#303030"/><rect x="10" y="12" width="58" height="4" rx="2" fill="#6B6B6B"/><rect x="10" y="24" width="72" height="4" rx="2" fill="#4A4A4A"/><rect x="10" y="36" width="40" height="4" rx="2" fill="#4A4A4A"/></g></g><g class="note" style="transition-delay:0.24s"><g transform="translate(296 92) rotate(4)"><rect width="96" height="62" rx="6" fill="#262626"/><rect x="10" y="12" width="58" height="4" rx="2" fill="#6B6B6B"/><rect x="10" y="24" width="72" height="4" rx="2" fill="#4A4A4A"/><rect x="10" y="36" width="40" height="4" rx="2" fill="#4A4A4A"/></g></g><text class="q" x="220" y="226" text-anchor="middle">?</text></g><g class="a1">
+<defs><marker id="ah1" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L8 4L0 8z" fill="#9A9A9A"/></marker></defs>
+<rect x="40" y="112" width="76" height="34" rx="6" fill="#161616" stroke="#6B6B6B"/><text class="t" x="78" y="133" text-anchor="middle">Start</text>
+<polygon points="196,100 236,129 196,158 156,129" fill="#161616" stroke="#9A9A9A"/><text class="t" x="196" y="133" text-anchor="middle">OK?</text>
+<rect x="292" y="92" width="92" height="32" rx="6" fill="#262626" stroke="#6B6B6B"/><text class="t" x="338" y="112" text-anchor="middle">Next screen</text>
+<rect x="292" y="142" width="92" height="32" rx="6" fill="#161616" stroke="#4A4A4A" stroke-dasharray="3 3"/><text class="t dim" x="338" y="162" text-anchor="middle">Error state</text>
+<path class="flow" d="M116 129 H154" marker-end="url(#ah1)" style="transition-delay:.1s"/>
+<path class="flow" d="M236 129 C262 129 262 108 290 108" marker-end="url(#ah1)" style="transition-delay:.45s"/>
+<path class="flow" d="M236 129 C262 129 262 158 290 158" marker-end="url(#ah1)" style="transition-delay:.7s"/>
+<text class="t dim" x="258" y="104">yes</text><text class="t dim" x="258" y="176">no</text>
+<text class="t dim" x="220" y="214" text-anchor="middle">Map the unhappy path before any screen</text></g>
+<g class="scr"><g transform="translate(145 70)">
+<rect width="150" height="164" rx="8" fill="#111111" stroke="#4A4A4A"/>
+<g class="wire" fill="none" stroke="#6B6B6B" stroke-dasharray="3 3">
+<rect x="10" y="10" width="130" height="16" rx="3"/><rect x="10" y="34" width="130" height="52" rx="4"/>
+<path d="M10 34L140 86M140 34L10 86" stroke="#3C3C3C"/>
+<rect x="10" y="98" width="96" height="6" rx="3"/><rect x="10" y="110" width="72" height="6" rx="3"/><rect x="10" y="132" width="64" height="22" rx="4"/></g>
+<g class="ui">
+<defs><linearGradient id="g1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3C3C3C"/><stop offset="1" stop-color="#6B6B6B"/></linearGradient><clipPath id="c1"><rect x="10" y="34" width="130" height="52" rx="4"/></clipPath></defs>
+<rect x="10" y="10" width="130" height="16" rx="3" fill="#262626"/><circle cx="20" cy="18" r="3.5" fill="#EDEDED"/><rect x="29" y="16" width="40" height="4" rx="2" fill="#C9C9C9"/><rect x="112" y="16" width="20" height="4" rx="2" fill="#6B6B6B"/>
+<g clip-path="url(#c1)"><rect x="10" y="34" width="130" height="52" fill="url(#g1)"/><circle cx="112" cy="50" r="8" fill="#C9C9C9"/><polygon points="10,86 48,56 76,76 98,64 140,86" fill="#262626"/></g>
+<rect x="10" y="98" width="96" height="6" rx="3" fill="#C9C9C9"/><rect x="10" y="110" width="72" height="6" rx="3" fill="#6B6B6B"/>
+<rect class="btn1" x="10" y="132" width="64" height="22" rx="4" fill="#EDEDED"/><rect x="22" y="141" width="40" height="4" rx="2" fill="#0D0D0D"/></g>
+<g class="hand" fill="none" stroke="#9A9A9A">
+<path d="M-8 26V34M-12 26H-4M-12 34H-4"/><path d="M-8 86V98M-12 86H-4M-12 98H-4"/><path d="M-8 116V132M-12 116H-4M-12 132H-4"/>
+<rect x="6" y="128" width="72" height="30" rx="5" stroke="#EDEDED" stroke-dasharray="3 3"/></g>
+<g class="hand"><text class="t dim" x="-16" y="33" text-anchor="end">8</text><text class="t dim" x="-16" y="95" text-anchor="end">12</text><text class="t dim" x="-16" y="127" text-anchor="end">16</text></g>
+</g></g>
+<g class="spec" transform="translate(286 70)"><rect width="134" height="164" rx="8" fill="#161616"/>
+<text x="14" y="26" class="t" style="font-weight:600;font-size:13px;fill:#EDEDED">Button</text><path d="M14 36H120" stroke="#262626"/>
+<text class="t dim" x="14" y="62">Height</text><text class="t" x="120" y="62" text-anchor="end">44</text>
+<text class="t dim" x="14" y="88">Radius</text><text class="t" x="120" y="88" text-anchor="end">8</text>
+<text class="t dim" x="14" y="114">Fill</text><text class="t" x="120" y="114" text-anchor="end">#EDEDED</text>
+<text class="t dim" x="14" y="140">Label</text><text class="t" x="120" y="140" text-anchor="end">14 / 500</text></g></svg>
+              </div>
+              <div>
+                <p>From a fuzzy brief to dev-ready screens: 60+ for Lumi, across employees, team leads and admins.</p>
+                <div class="tools"><span>User flows</span><span>Wireframes</span><span>Prototypes</span><span>Dev handoff</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="skill">
+            <button class="skill-name" type="button" aria-expanded="false" aria-controls="sk-2">UX research</button>
+            <div class="skill-panel" id="sk-2">
+              <div class="viz v2" data-steps="5" data-step="0" aria-hidden="true"><svg viewBox="0 0 440 250" role="img" aria-label="Research moving from interviews to notes, clusters, survey results and a decision"><rect width="440" height="250" rx="10" fill="#0D0D0D"/>
+<g class="r0">
+ <circle cx="44" cy="74" r="12" fill="#3C3C3C"/><rect x="66" y="56" width="190" height="52" rx="8" fill="#262626"/><rect x="80" y="70" width="140" height="5" rx="2.5" fill="#9A9A9A"/><rect x="80" y="82" width="110" height="5" rx="2.5" fill="#6B6B6B"/><rect x="80" y="94" width="70" height="5" rx="2.5" fill="#6B6B6B"/>
+ <circle cx="396" cy="146" r="12" fill="#9A9A9A"/><rect x="190" y="128" width="184" height="52" rx="8" fill="#3C3C3C"/><rect x="204" y="142" width="130" height="5" rx="2.5" fill="#C9C9C9"/><rect x="204" y="154" width="100" height="5" rx="2.5" fill="#9A9A9A"/>
+ <g class="dots"><circle cx="76" cy="214" r="4"/><circle cx="90" cy="214" r="4"/><circle cx="104" cy="214" r="4"/></g>
+</g>
+<g class="r2lab"><text class="t head" x="38" y="82">Pricing</text><text class="t head" x="170" y="82">Navigation</text><text class="t head" x="302" y="82">Forms</text></g>
+<g class="nt" style="--sx:36px;--sy:74px;--cx:38px;--cy:96px;--r:-6deg;transition-delay:0.00s"><rect width="56" height="30" rx="4" fill="#EDEDED"/><rect x="8" y="9" width="32" height="3" rx="1.5" fill="#0D0D0D" opacity=".55"/><rect x="8" y="17" width="22" height="3" rx="1.5" fill="#0D0D0D" opacity=".4"/></g><g class="nt" style="--sx:140px;--sy:52px;--cx:38px;--cy:134px;--r:4deg;transition-delay:0.05s"><rect width="56" height="30" rx="4" fill="#EDEDED"/><rect x="8" y="9" width="32" height="3" rx="1.5" fill="#0D0D0D" opacity=".55"/><rect x="8" y="17" width="22" height="3" rx="1.5" fill="#0D0D0D" opacity=".4"/></g><g class="nt" style="--sx:244px;--sy:86px;--cx:38px;--cy:172px;--r:-3deg;transition-delay:0.10s"><rect width="56" height="30" rx="4" fill="#EDEDED"/><rect x="8" y="9" width="32" height="3" rx="1.5" fill="#0D0D0D" opacity=".55"/><rect x="8" y="17" width="22" height="3" rx="1.5" fill="#0D0D0D" opacity=".4"/></g><g class="nt" style="--sx:336px;--sy:58px;--cx:170px;--cy:96px;--r:5deg;transition-delay:0.15s"><rect width="56" height="30" rx="4" fill="#6B6B6B"/><rect x="8" y="9" width="32" height="3" rx="1.5" fill="#0D0D0D" opacity=".55"/><rect x="8" y="17" width="22" height="3" rx="1.5" fill="#0D0D0D" opacity=".4"/></g><g class="nt" style="--sx:80px;--sy:142px;--cx:170px;--cy:134px;--r:-4deg;transition-delay:0.20s"><rect width="56" height="30" rx="4" fill="#6B6B6B"/><rect x="8" y="9" width="32" height="3" rx="1.5" fill="#0D0D0D" opacity=".55"/><rect x="8" y="17" width="22" height="3" rx="1.5" fill="#0D0D0D" opacity=".4"/></g><g class="nt" style="--sx:190px;--sy:160px;--cx:170px;--cy:172px;--r:3deg;transition-delay:0.25s"><rect width="56" height="30" rx="4" fill="#6B6B6B"/><rect x="8" y="9" width="32" height="3" rx="1.5" fill="#0D0D0D" opacity=".55"/><rect x="8" y="17" width="22" height="3" rx="1.5" fill="#0D0D0D" opacity=".4"/></g><g class="nt" style="--sx:292px;--sy:140px;--cx:302px;--cy:96px;--r:-5deg;transition-delay:0.30s"><rect width="56" height="30" rx="4" fill="#3C3C3C"/><rect x="8" y="9" width="32" height="3" rx="1.5" fill="#0D0D0D" opacity=".55"/><rect x="8" y="17" width="22" height="3" rx="1.5" fill="#0D0D0D" opacity=".4"/></g><g class="nt" style="--sx:46px;--sy:196px;--cx:302px;--cy:134px;--r:6deg;transition-delay:0.35s"><rect width="56" height="30" rx="4" fill="#3C3C3C"/><rect x="8" y="9" width="32" height="3" rx="1.5" fill="#0D0D0D" opacity=".55"/><rect x="8" y="17" width="22" height="3" rx="1.5" fill="#0D0D0D" opacity=".4"/></g><g class="nt" style="--sx:250px;--sy:192px;--cx:302px;--cy:172px;--r:-2deg;transition-delay:0.40s"><rect width="56" height="30" rx="4" fill="#3C3C3C"/><rect x="8" y="9" width="32" height="3" rx="1.5" fill="#0D0D0D" opacity=".55"/><rect x="8" y="17" width="22" height="3" rx="1.5" fill="#0D0D0D" opacity=".4"/></g>
+<g class="r3"><text class="t head" x="30" y="48">Survey of 20 people</text><circle cx="34" cy="83" r="3" fill="#EDEDED"/><text class="t" x="46" y="87">Services unclear</text><circle cx="34" cy="117" r="3" fill="#EDEDED"/><text class="t" x="46" y="121">Mostly on mobile</text><circle cx="34" cy="151" r="3" fill="#EDEDED"/><text class="t" x="46" y="155">Wanted a quick enquiry</text><circle cx="34" cy="185" r="3" fill="#EDEDED"/><text class="t" x="46" y="189">Hard to navigate</text></g>
+<g class="r4">
+ <rect class="cd" x="48" y="72" width="104" height="128" rx="8" fill="#161616"/><rect x="62" y="88" width="48" height="6" rx="3" fill="#6B6B6B"/><rect x="62" y="108" width="76" height="14" rx="3" fill="#3C3C3C"/><rect x="62" y="136" width="70" height="4" rx="2" fill="#262626"/><rect x="62" y="148" width="60" height="4" rx="2" fill="#262626"/>
+ <rect class="cd hi" x="168" y="58" width="104" height="156" rx="8" fill="#EDEDED"/><rect x="182" y="76" width="48" height="6" rx="3" fill="#6B6B6B"/><rect x="182" y="98" width="76" height="16" rx="3" fill="#0D0D0D"/><rect x="182" y="128" width="70" height="4" rx="2" fill="#9A9A9A"/><rect x="182" y="140" width="60" height="4" rx="2" fill="#9A9A9A"/><rect x="182" y="170" width="76" height="26" rx="5" fill="#0D0D0D"/>
+ <rect class="cd" x="288" y="72" width="104" height="128" rx="8" fill="#161616"/><rect x="302" y="88" width="48" height="6" rx="3" fill="#6B6B6B"/><rect x="302" y="108" width="76" height="14" rx="3" fill="#3C3C3C"/><rect x="302" y="136" width="70" height="4" rx="2" fill="#262626"/><rect x="302" y="148" width="60" height="4" rx="2" fill="#262626"/>
+ <text class="t head" x="220" y="40" text-anchor="middle">3 pricing cards, before the form</text>
+</g>
+<text class="cap c0" x="30" y="240">Listen: interviews</text><text class="cap c1" x="30" y="240">Capture: one idea per note</text><text class="cap c2" x="30" y="240">Cluster: find the pattern</text><text class="cap c3" x="30" y="240">Measure: how many feel it</text><text class="cap c4" x="30" y="240">Decide: design from the evidence</text>
+</svg>
+              </div>
+              <div>
+                <p>Surveys, interviews and heatmaps. A 20-person survey showed that people couldn’t tell what Novel Office actually does, so services now come first.</p>
+                <div class="tools"><span>Interviews</span><span>Surveys</span><span>Usability tests</span><span>Clarity and GA4</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="skill">
+            <button class="skill-name" type="button" aria-expanded="false" aria-controls="sk-3">UI and interaction</button>
+            <div class="skill-panel" id="sk-3">
+              <div class="viz v3" data-steps="4" data-step="0" aria-hidden="true"><svg viewBox="0 0 440 250" role="img" aria-label="A settings panel: a toggle, a slider and a save button reacting to a cursor"><rect width="440" height="250" rx="10" fill="#0D0D0D"/>
+<g transform="translate(50 40)">
+<rect width="340" height="196" rx="10" fill="#161616"/>
+<text class="h" x="24" y="34">Notifications</text><text class="t dim" x="24" y="52">Choose what reaches you</text>
+<text class="t" x="24" y="90">Email alerts</text>
+<rect class="trk" x="272" y="76" width="44" height="24" rx="12"/><circle class="knob" cx="284" cy="88" r="9"/>
+<text class="t" x="24" y="132">Volume</text>
+<g class="v-a"><text class="t" x="316" y="132" text-anchor="end">40</text></g><g class="v-b"><text class="t" x="316" y="132" text-anchor="end" style="fill:#EDEDED;font-weight:600">85</text></g>
+<rect x="24" y="142" width="292" height="6" rx="3" fill="#262626"/><rect class="fill" x="24" y="142" width="292" height="6" rx="3" fill="#EDEDED"/>
+<circle class="hdl" cx="126" cy="145" r="8" fill="#EDEDED"/>
+<g class="btnw"><rect class="ring" x="20" y="154" width="128" height="38" rx="9" fill="none" stroke="#9A9A9A" stroke-dasharray="3 3"/><rect class="save" x="24" y="158" width="120" height="30" rx="7" fill="#EDEDED"/><text x="84" y="177" text-anchor="middle" style="font-size:12px;font-weight:600;fill:#0D0D0D;font-family:var(--body)">Save changes</text><circle class="rip" cx="84" cy="173" r="10" fill="#0D0D0D"/></g>
+<rect x="156" y="158" width="76" height="30" rx="7" fill="none" stroke="#3C3C3C"/><text x="194" y="177" text-anchor="middle" class="t dim">Cancel</text>
+</g>
+<g class="toast"><rect x="140" y="0" width="160" height="28" rx="8" fill="#EDEDED"/><circle cx="158" cy="14" r="6" fill="#0D0D0D"/><path d="M155 14l2.2 2.4L161.5 11.6" fill="none" stroke="#EDEDED" stroke-width="1.6" stroke-linecap="round"/><text x="172" y="18" style="font-size:12px;font-weight:600;fill:#0D0D0D;font-family:var(--body)">Preferences saved</text></g>
+<g class="cur"><path d="M0 0L0 16L4.5 12L8 19.5L11 18L7.5 11L13 11Z" fill="#EDEDED" stroke="#0D0D0D" stroke-width="1.2" stroke-linejoin="round"/></g>
+</svg>
+              </div>
+              <div>
+                <p>Clear hierarchy and states that explain themselves, like Lumi saying “I don’t know yet” instead of guessing.</p>
+                <div class="tools"><span>Visual hierarchy</span><span>Micro-interactions</span><span>Accessibility</span><span>Responsive</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="skill">
+            <button class="skill-name" type="button" aria-expanded="false" aria-controls="sk-4">Design systems</button>
+            <div class="skill-panel" id="sk-4">
+              <div class="viz v4" data-steps="4" data-step="0" aria-hidden="true"><svg viewBox="0 0 440 250" role="img" aria-label="Design tokens becoming components, then a card that switches between dark and light themes"><rect width="440" height="250" rx="10" fill="#0D0D0D"/>
+<g class="d0">
+ <rect class="tk" style="transition-delay:0.00s" x="30" y="42" width="26" height="26" rx="5" fill="#EDEDED"/><rect class="tk" style="transition-delay:0.05s" x="62" y="42" width="26" height="26" rx="5" fill="#C9C9C9"/><rect class="tk" style="transition-delay:0.10s" x="94" y="42" width="26" height="26" rx="5" fill="#9A9A9A"/><rect class="tk" style="transition-delay:0.15s" x="126" y="42" width="26" height="26" rx="5" fill="#6B6B6B"/><rect class="tk" style="transition-delay:0.20s" x="158" y="42" width="26" height="26" rx="5" fill="#3C3C3C"/><rect class="tk" style="transition-delay:0.25s" x="190" y="42" width="26" height="26" rx="5" fill="#262626"/><text class="t dim" x="30" y="88">color</text>
+ <text class="aa" x="250" y="66" style="font-size:34px">Aa</text><text class="aa" x="298" y="66" style="font-size:22px">Aa</text><text class="aa" x="334" y="66" style="font-size:14px">Aa</text><text class="t dim" x="250" y="88">type</text>
+ <rect class="tk" x="30" y="132" width="6" height="6" fill="#9A9A9A"/><rect class="tk" x="46" y="132" width="12" height="12" fill="#9A9A9A"/><rect class="tk" x="68" y="132" width="24" height="24" fill="#9A9A9A"/><rect class="tk" x="102" y="132" width="36" height="36" fill="#9A9A9A"/><text class="t dim" x="30" y="190">space</text>
+ <rect class="tk" x="250" y="132" width="36" height="36" rx="2" fill="none" stroke="#9A9A9A" stroke-width="2"/><rect class="tk" x="296" y="132" width="36" height="36" rx="8" fill="none" stroke="#9A9A9A" stroke-width="2"/><rect class="tk" x="342" y="132" width="36" height="36" rx="18" fill="none" stroke="#9A9A9A" stroke-width="2"/><text class="t dim" x="250" y="190">radius</text>
+ <text class="t dim" x="30" y="226">Tokens first: colour, type, space, radius</text>
+</g>
+<g class="d1">
+ <rect class="cp" style="transition-delay:.0s" x="40" y="48" width="110" height="36" rx="8" fill="#EDEDED"/><text class="bt" x="95" y="71" text-anchor="middle" style="fill:#0D0D0D">Primary</text>
+ <rect class="cp" style="transition-delay:.1s" x="164" y="48" width="110" height="36" rx="8" fill="none" stroke="#6B6B6B"/><text class="bt" x="219" y="71" text-anchor="middle">Secondary</text>
+ <text class="cp bt dim" style="transition-delay:.2s" x="334" y="71" text-anchor="middle">Ghost</text>
+ <rect class="cp" style="transition-delay:.3s" x="40" y="108" width="234" height="36" rx="8" fill="#161616" stroke="#3C3C3C"/><text class="bt dim" x="54" y="131">Email address</text>
+ <g class="cp" style="transition-delay:.4s"><rect x="304" y="114" width="44" height="24" rx="12" fill="#EDEDED"/><circle cx="336" cy="126" r="9" fill="#0D0D0D"/></g>
+ <rect class="cp" style="transition-delay:.5s" x="40" y="166" width="64" height="26" rx="13" fill="#262626"/><text class="bt dim" x="72" y="183" text-anchor="middle">Filter</text>
+ <rect class="cp" style="transition-delay:.6s" x="114" y="166" width="64" height="26" rx="13" fill="#262626"/><text class="bt dim" x="146" y="183" text-anchor="middle">Tag</text>
+ <text class="t dim" x="30" y="226">Then components, built only from tokens</text>
+</g>
+<g class="d2">
+ <rect class="cbg" x="110" y="34" width="220" height="188" rx="10"/>
+ <text class="ctt" x="130" y="64">Book a room</text><text class="csub" x="130" y="82">Pick a slot, confirm in one place</text>
+ <rect class="cin" x="130" y="98" width="180" height="30" rx="7"/><text class="csub" x="142" y="117">Tuesday, 10:00</text>
+ <rect class="cbtn" x="130" y="142" width="180" height="34" rx="8"/><text class="cbt" x="220" y="164" text-anchor="middle">Confirm booking</text>
+ <rect class="cmode" x="268" y="48" width="42" height="20" rx="10"/><circle class="cknob" cx="278" cy="58" r="7"/>
+ <text class="t dim" x="30" y="242" style="font-size:11px">One system, dark and light from the same tokens</text>
+</g></svg>
+              </div>
+              <div>
+                <p>Tokens and components that keep devs fast: Lumi’s light and dark system, and Novel’s system reused for room booking.</p>
+                <div class="tools"><span>Tokens</span><span>Components</span><span>Light and dark</span><span>Documentation</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Know more about me -->
+    <section class="section">
+      <div class="wrap">
+        <div class="know reveal">
+          <h2>Know more about me</h2>
+          <div class="know-cols">
+            <div>
+              <h3>My design process</h3>
+              <p>How I take a fuzzy problem from research and flows to screens the devs can actually build.</p>
+            </div>
+            <div>
+              <h3>Me, outside work</h3>
+              <p>Painting, pottery, a book on the go and long bike rides.</p>
+            </div>
+          </div>
+          <a class="btn primary" href="me.html">Get to know me
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <section class="contact" aria-label="Contact">
+    <div class="wrap">
+      <div class="reveal" style="display:grid; gap:16px">
+        <h2>Let’s build something together.</h2>
+        <p class="lead">Open to product designer roles in Bengaluru (hybrid) or remote. Email is the fastest way to reach me.</p>
+      </div>
+      <div class="contact-side reveal" style="--d:.1s">
+        <a class="big-mail" href="mailto:anjali.p.designs@gmail.com">anjali.p.designs@gmail.com</a>
+        <div class="socials">
+          <a href="tel:+917004689616">+91 70046 89616</a>
+          <a href="https://www.linkedin.com/in/anjalipramanik" target="_blank" rel="noopener"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>LinkedIn</a>
+          <a href="https://www.behance.net/uiuxanjali" target="_blank" rel="noopener"><svg class="ic ic-be" viewBox="0 0 24 24" aria-hidden="true"><rect width="24" height="24" rx="4"/><text x="12" y="16.5" text-anchor="middle">Bē</text></svg>Behance</a>
+          <a href="https://anjalidesigns.netlify.app/assets/Anjali_Pramanik_Resume.pdf" target="_blank" rel="noopener">Resume</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="wrap">
+      <span>© <span id="year">2026</span> Anjali Pramanik</span>
+      <span>Designed by me, supervised by four cats</span>
+    </div>
+  </footer>
+
+  <script src="assets/v2/main.js?v=2300"></script>
+</body>
+</html>
