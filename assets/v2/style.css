@@ -632,7 +632,7 @@ p { margin: 0; }
 .cat-face { width: 120px; height: 80px; transition: transform .25s var(--ease); }
 .cat.left .cat-face { transform: scaleX(-1); }
 .cat svg { position: absolute; inset: 0; width: 120px; height: 80px; display: none; overflow: visible; filter: drop-shadow(0 0 1px rgba(244, 236, 233, .55)) drop-shadow(0 8px 18px rgba(255, 74, 61, .35)); }
-.cat.walk .s-walk, .cat.sit .s-sit, .cat.sleep .s-sleep { display: block; }
+.cat.walk .s-walk, .cat.sit .s-sit, .cat.sleep .s-sleep, .cat.loaf .s-loaf, .cat.groom .s-groom, .cat.belly .s-belly { display: block; }
 .cat .leg { transform-box: fill-box; transform-origin: 50% 0%; }
 .cat .leg-a { animation: legA .32s ease-in-out infinite alternate; }
 .cat .leg-b { animation: legB .32s ease-in-out infinite alternate; }
@@ -732,7 +732,7 @@ p { margin: 0; }
   .nav .logo { padding: 0 8px; }
   .nav a, .nav button { padding: 0 11px; font-size: var(--fs-caption); }
 }
-@media (hover: none) { .cat, .cat-toggle { display: none !important; } }
+@media (hover: none) { .cat-toggle { display: none !important; } }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
@@ -1046,10 +1046,9 @@ body.lb-lock { overflow: hidden; }
 }
 @media (max-width: 960px) { .label, .labels line { display: none; } }
 
-/* Home work grid: Lumi featured across the top, the other two side by side */
-@media (min-width: 901px) {
-  .work-grid > .project:first-child { grid-column: 1 / -1; display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); gap: clamp(24px, 4vw, 56px); align-items: center; }
-}
+/* Home work grid: every project card has the same layout */
+@media (min-width: 1000px) { .work-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (min-width: 701px) and (max-width: 999px) { .work-grid { grid-template-columns: 1fr; max-width: 640px; } }
 
 /* ---------- Performance ---------- */
 .paused, .paused * { animation-play-state: paused !important; }
@@ -1060,3 +1059,52 @@ body.lb-lock { overflow: hidden; }
 .shot.page img, .project:hover .shot.page img, .next:hover .shot.page img { object-fit: cover; object-position: center top; animation: none; transition: transform 1s var(--ease), filter .6s var(--ease); }
 [data-depth] { will-change: transform; }
 @media (hover: hover) and (pointer: fine) { .shot .go { display: none; } }
+
+/* Cat: rest poses, belly rubs, day and night eyes */
+.cat .groom-paw { transform-box: fill-box; transform-origin: 50% 100%; animation: lick .7s ease-in-out infinite alternate; }
+.cat .groom-head { transform-box: fill-box; transform-origin: 50% 100%; animation: groomHead 1.4s ease-in-out infinite alternate; }
+@keyframes lick { from { transform: translateY(0) rotate(0); } to { transform: translateY(-3px) rotate(-8deg); } }
+@keyframes groomHead { from { transform: rotate(-4deg); } to { transform: rotate(-12deg); } }
+.cat .pu { transform-box: fill-box; transform-origin: 50% 100%; }
+.cat .pu.a { animation: paddle .5s ease-in-out infinite alternate; }
+.cat .pu.b { animation: paddle .5s ease-in-out .25s infinite alternate; }
+@keyframes paddle { from { transform: rotate(-10deg); } to { transform: rotate(10deg); } }
+.cat.belly .hearts { display: block; }
+.cat.belly .cat-body { animation: wiggle 1.6s ease-in-out infinite; }
+@keyframes wiggle { 0%, 100% { transform: rotate(0); } 50% { transform: rotate(-3deg); } }
+/* Day: plain amber eyes with pupils, no glow. Night: glowing eyes, no pupils */
+.cat .iris, .crosser .iris { filter: none; }
+.cat.night .pupil, .crosser.night .pupil { display: none; }
+.cat.night .iris, .crosser.night .iris { fill: #FFD36B; filter: url(#ap-eye-glow); }
+
+/* Expertise: heading and list on the left, scene on the right, both starting at the top; no panel background */
+.skills { grid-template-rows: auto repeat(4, auto) 1fr; align-items: start; }
+.skills-head { grid-column: 1; grid-row: 1; display: grid; gap: 14px; margin-bottom: clamp(20px, 3vw, 40px); }
+.skill-panel { background: none; padding: 0; min-height: 0; gap: 22px; align-content: start; grid-template-rows: auto auto; }
+.skill-panel .viz { justify-items: start; place-items: start; min-height: 0; }
+.skill-panel .viz svg { max-width: 520px; }
+@media (max-width: 1000px) {
+  .skills-head { margin-bottom: 8px; }
+  .skill { background: none; border-radius: 0; }
+  .skill-name { padding: 22px 0 0; }
+  .skill-panel { padding: 16px 0 12px; }
+}
+
+.tool-points .tp-dot { width: 24px; height: 24px; flex: none; display: grid; place-items: center; }
+.tool-points .tp-dot::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--glow); }
+.tool-points svg { width: 24px; height: 24px; }
+
+/* Resume download in the nav (a CTA, so it gets the red gradient) */
+.nav .nav-resume { color: var(--bone); background: linear-gradient(135deg, #C42020 0%, #7A0E12 55%, #2A0809 100%); gap: 8px; margin-left: 4px; }
+.nav .nav-resume:hover { background: linear-gradient(135deg, #C42020 0%, #7A0E12 55%, #2A0809 100%); box-shadow: 0 0 0 1px rgba(255, 90, 70, .5), 0 0 22px rgba(255, 42, 31, .55); }
+.nav .nav-resume svg { width: 17px; height: 17px; flex: none; }
+@media (max-width: 720px) { .nav .nav-resume span { display: none; } .nav .nav-resume { padding: 0 12px; } }
+@media (max-width: 380px) { .nav a, .nav button { padding: 0 9px; } .nav .nav-resume { padding: 0 10px; margin-left: 0; } }
+
+/* ---------- Touch devices: corner cat and paw prints ---------- */
+.cat.touch { width: 96px; height: 64px; touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
+.cat.touch .cat-body, .cat.touch .cat-face, .cat.touch svg { width: 96px; height: 64px; }
+.paws { position: fixed; inset: 0; z-index: 59; pointer-events: none; overflow: hidden; }
+.paws i { position: absolute; left: 0; top: 0; width: 22px; height: 22px; animation: pawFade 1.9s ease-out forwards; }
+.paws svg { width: 100%; height: 100%; fill: #0A0505; filter: drop-shadow(0 0 1px rgba(244, 236, 233, .35)) drop-shadow(0 0 6px rgba(255, 60, 45, .55)); }
+@keyframes pawFade { 0% { opacity: 0; } 8% { opacity: 1; } 60% { opacity: .9; } 100% { opacity: 0; } }

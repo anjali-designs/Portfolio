@@ -184,7 +184,8 @@
     get: k => { try { return localStorage.getItem(k); } catch { return null; } },
     set: (k, v) => { try { localStorage.setItem(k, v); } catch { } },
   };
-  const catOK = fine && !reduce;
+  const catOK = !reduce;
+  const touchMode = !fine;
   /* eyes glow only at night (visitor's local time) */
   const glowDefs = document.createElementNS("http://www.w3.org/2000/svg", "svg");
   glowDefs.setAttribute("width", "0"); glowDefs.setAttribute("height", "0"); glowDefs.setAttribute("aria-hidden", "true");
@@ -193,7 +194,7 @@
   document.body.appendChild(glowDefs);
   const isNight = () => { const h = new Date().getHours(); return h >= 18 || h < 6; };
   let cat = null, catOn = store.get("ap-cat") !== "off";
-  const cs = { x: 80, y: window.innerHeight - 140, mode: "sit", left: false, last: Date.now(), petting: false, override: null, pets: 0, hopLock: false };
+  const cs = { x: 80, y: window.innerHeight - 140, mode: "sit", rest: "sit", belly: 0, nextWander: Date.now() + 25000 + Math.random() * 20000, left: false, last: Date.now(), petting: false, override: null, pets: 0, hopLock: false };
 
   const heartPath = "M12 21s-7-4.4-9.3-8.6C1 9 3 5.5 6.5 5.5c2 0 3.3 1 4.1 2.3.8-1.3 2.1-2.3 4.1-2.3 3.5 0 5.5 3.5 3.8 6.9C19 16.6 12 21 12 21z";
   const walkSVG = `
@@ -228,6 +229,47 @@
           <g class="eye"><ellipse class="iris" cx="53" cy="28" rx="2.6" ry="3.1"/><ellipse class="pupil" cx="53" cy="28" rx="0.8" ry="2.3"/></g>
           <g class="eye"><ellipse class="iris" cx="63" cy="28" rx="2.6" ry="3.1"/><ellipse class="pupil" cx="63" cy="28" rx="0.8" ry="2.3"/></g>
         </svg>
+        <svg class="s-loaf" viewBox="0 0 120 80">
+          <path class="tail-s" d="M84 70 C 98 72, 100 62, 92 58" fill="none" stroke="#050303" stroke-width="6" stroke-linecap="round"/>
+          <ellipse cx="60" cy="64" rx="30" ry="14" fill="#050303"/>
+          <ellipse cx="50" cy="77" rx="6.5" ry="3.2" fill="#050303" stroke="#1E1210" stroke-width="1"/>
+          <ellipse cx="66" cy="77" rx="6.5" ry="3.2" fill="#050303" stroke="#1E1210" stroke-width="1"/>
+          <circle cx="58" cy="46" r="14" fill="#050303"/>
+          <path class="ear-c l" d="M46 40 L46 24 L55 34 Z" fill="#050303"/>
+          <path class="ear-c r" d="M61 34 L70 24 L70 40 Z" fill="#050303"/>
+          <g class="eye"><ellipse class="iris" cx="53" cy="46" rx="2.6" ry="3.1"/><ellipse class="pupil" cx="53" cy="46" rx="0.8" ry="2.3"/></g>
+          <g class="eye"><ellipse class="iris" cx="63" cy="46" rx="2.6" ry="3.1"/><ellipse class="pupil" cx="63" cy="46" rx="0.8" ry="2.3"/></g>
+        </svg>
+        <svg class="s-groom" viewBox="0 0 120 80">
+          <path class="tail-s" d="M70 76 C 94 78, 102 66, 94 56" fill="none" stroke="#050303" stroke-width="6" stroke-linecap="round"/>
+          <ellipse cx="58" cy="56" rx="18" ry="20" fill="#050303"/>
+          <ellipse cx="44" cy="66" rx="13" ry="11" fill="#050303" stroke="#1E1210" stroke-width="1"/>
+          <path d="M63 50 V73 a4.5 4 0 0 0 9 0 V50 Z" fill="#050303" stroke="#1E1210" stroke-width="1"/>
+          <g class="groom-head">
+            <circle cx="56" cy="28" r="14" fill="#050303"/>
+            <path d="M44 22 L43 6 L53 15 Z" fill="#050303"/>
+            <path d="M59 15 L68 5 L69 21 Z" fill="#050303"/>
+            <path d="M48 28 q3 2 6 0 M58 28 q3 2 6 0" fill="none" stroke="#BFB2AE" stroke-width="1.3" stroke-linecap="round"/>
+            <path d="M54 35 q2 3 4 0" fill="#C7615A"/>
+          </g>
+          <path class="groom-paw" d="M52 52 C 50 44, 50 38, 54 35 a4.5 4.5 0 0 1 7 4 C 61 44, 60 48, 61 52 Z" fill="#050303" stroke="#1E1210" stroke-width="1"/>
+        </svg>
+        <svg class="s-belly" viewBox="0 0 120 80">
+          <path class="tail-s" d="M88 64 C 104 66, 110 54, 102 46" fill="none" stroke="#050303" stroke-width="6" stroke-linecap="round"/>
+          <g class="paws-up">
+            <path class="pu a" d="M44 56 C 42 46, 36 42, 38 36" fill="none" stroke="#050303" stroke-width="7" stroke-linecap="round"/>
+            <path class="pu b" d="M56 54 C 56 44, 52 40, 54 33" fill="none" stroke="#050303" stroke-width="7" stroke-linecap="round"/>
+            <path class="pu a" d="M70 54 C 72 44, 70 40, 74 34" fill="none" stroke="#050303" stroke-width="7" stroke-linecap="round"/>
+            <path class="pu b" d="M82 56 C 86 48, 86 42, 90 38" fill="none" stroke="#050303" stroke-width="7" stroke-linecap="round"/>
+          </g>
+          <ellipse cx="62" cy="62" rx="30" ry="13" fill="#050303"/>
+          <ellipse cx="62" cy="57" rx="17" ry="6" fill="#241512"/>
+          <circle cx="30" cy="62" r="13" fill="#050303"/>
+          <path d="M22 72 L14 80 L26 76 Z" fill="#050303"/>
+          <path d="M34 74 L34 84 L40 74 Z" fill="#050303"/>
+          <path d="M24 60 q2.5 -2.5 5 0 M32 60 q2.5 -2.5 5 0" fill="none" stroke="#BFB2AE" stroke-width="1.3" stroke-linecap="round"/>
+          <path d="M28 66 q2 1.6 4 0" fill="none" stroke="#BFB2AE" stroke-width="1.1" stroke-linecap="round"/>
+        </svg>
         <svg class="s-sleep" viewBox="0 0 120 80">
           <g class="breathe">
             <path d="M26 66 C 26 80, 70 82, 82 72" fill="none" stroke="#050303" stroke-width="6" stroke-linecap="round"/>
@@ -244,13 +286,34 @@
       </div></div>
       <div class="hearts">${[0, 1, 2].map(() => `<svg viewBox="0 0 24 24"><path d="${heartPath}" fill="#FF4A3D"/></svg>`).join("")}</div>`;
     document.body.appendChild(cat);
+    if (touchMode) {
+      cat.classList.add("touch");
+      cs.x = window.innerWidth - 104; cs.y = window.innerHeight - 78;
+      cs.rest = "sleep"; cs.nextPose = Date.now() + 9000; cs.nextWander = Date.now() + 18000 + Math.random() * 15000;
+      /* tap to pet, double tap for belly rubs */
+      let lastTap = 0;
+      cat.addEventListener("touchstart", () => {
+        const t = Date.now();
+        cat.classList.add("purr"); clearTimeout(cs.purrT); cs.purrT = setTimeout(() => { if (Date.now() >= cs.belly) cat.classList.remove("purr"); }, 1600);
+        if (t - lastTap < 320) { cs.belly = t + 7000; cs.override = null; say("Belly rubs unlocked.", 2000); }
+        else if (cs.mode === "sleep") { cs.rest = "sit"; cs.nextPose = t + 6000; }
+        lastTap = t;
+      }, { passive: true });
+    }
 
     cat.addEventListener("mouseenter", () => { cs.petting = true; cs.last = Date.now(); cat.classList.add("purr"); });
-    cat.addEventListener("mouseleave", () => { cs.petting = false; cat.classList.remove("purr"); });
+    cat.addEventListener("mouseleave", () => { cs.petting = false; if (Date.now() >= cs.belly) cat.classList.remove("purr"); });
+    cat.addEventListener("dblclick", (e) => {
+      e.preventDefault();
+      cs.belly = Date.now() + 7000; cs.override = null;
+      cat.classList.add("purr");
+      say("Belly rubs unlocked. Careful, it might be a trap.", 2600);
+    });
     cat.addEventListener("click", () => {
+      if (Date.now() < cs.belly) { cs.belly = Date.now() + 7000; return; }
       cs.pets++;
       if (cs.pets === 1) say("Prrrr.");
-      if (cs.pets === 3) { rollEyes(); say("She rolled her eyes at you. That means she likes you."); }
+      if (cs.pets === 3) { if (isNight()) say("Her eyes are glowing. She sees everything at night."); else { rollEyes(); say("She rolled her eyes at you. That means she likes you."); } }
       if (cs.pets === 5) say("Five pets. You are officially the cat’s favourite recruiter.", 3200);
     });
 
@@ -276,7 +339,7 @@
 
   const setMode = (m) => {
     if (cs.mode === m) return;
-    cat.classList.remove("walk", "sit", "sleep");
+    cat.classList.remove("walk", "sit", "sleep", "loaf", "groom", "belly");
     cat.classList.add(m);
     cs.mode = m;
   };
@@ -318,9 +381,9 @@
       else { const a = Math.PI - Math.PI * Math.min(1, k); px = Math.cos(a) * 1.2; py = -Math.abs(Math.sin(a)) * 1.25 - (k > 1 ? 1.1 : 0); }
     }
     if (!roll) {
-      if (cs.mode === "sit" && now > nextRoll) rollEyes();
+      if ((cs.mode === "sit" || cs.mode === "loaf") && now > nextRoll && !isNight()) rollEyes();
       const sitting = cs.mode !== "walk";
-      const hx = cs.x + (sitting ? 58 : (cs.left ? 120 - 98 : 98)), hy = cs.y + (sitting ? 28 : 29);
+      const hx = cs.x + (sitting ? 58 : (cs.left ? 120 - 98 : 98)), hy = cs.y + (cs.mode === "loaf" ? 46 : sitting ? 28 : 29);
       const dx = mx - hx, dy = my - hy, d = Math.hypot(dx, dy) || 1, m = Math.min(1, d / 160);
       px = (dx / d) * 1.15 * m * (cs.left ? -1 : 1); py = (dy / d) * 0.9 * m;
     }
@@ -333,28 +396,47 @@
   const loop = () => {
     if (!reduce && fine) applyParallax();
     if (cat && catOn) {
+      if (touchMode && (VW !== window.innerWidth || VH !== window.innerHeight)) { VW = window.innerWidth; VH = window.innerHeight; }
       const now = Date.now();
       const catCx = cs.x + 60;
       let tx, ty;
-      if (cs.override && now < cs.override.until) { tx = cs.override.x; ty = cs.override.y; }
+      const onBelly = now < cs.belly;
+      if (!onBelly && cat.classList.contains("purr") && !cs.petting) cat.classList.remove("purr");
+      /* now and then she stops following and wanders off to sit somewhere */
+      if (!cs.override && !onBelly && !cs.petting && now > cs.nextWander) {
+        cs.override = touchMode
+          ? { x: 10 + Math.random() * (VW - 120), y: VH * 0.35 + Math.random() * (VH * 0.65 - 80), until: now + 10000 + Math.random() * 8000, wander: true }
+          : { x: 40 + Math.random() * (VW - 200), y: 120 + Math.random() * (VH - 240), until: now + 9000 + Math.random() * 7000, wander: true };
+        cs.nextWander = now + (touchMode ? 25000 + Math.random() * 25000 : 40000 + Math.random() * 40000);
+      }
+      if (cs.override && now >= cs.override.until) cs.override = null;
+      if (cs.override) { tx = cs.override.x; ty = cs.override.y; }
+      else if (touchMode) { tx = VW - 104; ty = VH - 78; }
       else { tx = mx < catCx ? mx + 24 : mx - 150; ty = my - 40; }
       tx = Math.max(0, Math.min(VW - 120, tx));
-      ty = Math.max(0, Math.min(VH - 80, ty));
+      ty = Math.max(70, Math.min(VH - (touchMode ? 78 : 80), ty));
       const dx = tx - cs.x, dy = ty - cs.y;
       let moving = false;
-      if (!cs.petting && Math.hypot(dx, dy) > 6) {
+      if (!cs.petting && !onBelly && Math.hypot(dx, dy) > 6) {
         let sx = dx * 0.05, sy = dy * 0.05;
-        const m = Math.hypot(sx, sy), cap = 10;
+        const m = Math.hypot(sx, sy), cap = cs.override && cs.override.wander ? (touchMode ? 2.2 : 4) : (touchMode ? 3 : 10);
         if (m > cap) { sx = sx / m * cap; sy = sy / m * cap; }
         cs.x += sx; cs.y += sy;
         moving = m > 0.6;
       }
-      setMode(moving ? "walk" : (now - cs.last > 9000 && !cs.petting ? "sleep" : "sit"));
-      const left = moving ? (Math.abs(dx) > 3 ? dx < 0 : cs.left) : mx < cs.x + 60;
+      if (moving && cs.mode !== "walk") { const r = Math.random(); cs.rest = r < 0.45 ? "sit" : r < 0.8 ? "loaf" : "groom"; }
+      if (touchMode && !moving && now > (cs.nextPose || 0)) {
+        const poses = ["sleep", "sleep", "groom", "loaf", "sit"];
+        cs.rest = poses[Math.floor(Math.random() * poses.length)];
+        cs.nextPose = now + 8000 + Math.random() * 7000;
+      }
+      const idle = !touchMode && now - cs.last > 9000 && !cs.petting && !(cs.override && cs.override.wander);
+      setMode(onBelly ? "belly" : moving ? "walk" : idle ? "sleep" : cs.rest);
+      const left = moving ? (Math.abs(dx) > 3 ? dx < 0 : cs.left) : (cs.override || onBelly || touchMode ? cs.left : mx < cs.x + 60);
       if (left !== cs.left) { cs.left = left; cat.classList.toggle("left", left); }
       const ctf = `translate3d(${cs.x.toFixed(1)}px, ${cs.y.toFixed(1)}px, 0)`;
       if (ctf !== lastCatTf) { cat.style.transform = ctf; lastCatTf = ctf; }
-      if (cs.mode !== "sleep") lookAt();
+      if (cs.mode === "sit" || cs.mode === "loaf" || cs.mode === "walk") lookAt();
     }
     requestAnimationFrame(loop);
   };
@@ -567,4 +649,42 @@
   if (!("IntersectionObserver" in window)) return;
   const io = new IntersectionObserver((es) => es.forEach((e) => e.target.classList.toggle("paused", !e.isIntersecting)), { rootMargin: "100px" });
   document.querySelectorAll(".line-scroll, .marquee, .viz").forEach((el) => io.observe(el));
+})();
+
+/* ---------- Touch: black paw prints follow your finger ---------- */
+(() => {
+  if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  const layer = document.createElement("div");
+  layer.className = "paws"; layer.setAttribute("aria-hidden", "true");
+  document.body.appendChild(layer);
+  const PAW = '<svg viewBox="0 0 24 24"><ellipse cx="12" cy="15.6" rx="5.2" ry="4.4"/><ellipse cx="5.6" cy="9.6" rx="2.1" ry="2.7" transform="rotate(-20 5.6 9.6)"/><ellipse cx="9.6" cy="5.6" rx="2.2" ry="2.8" transform="rotate(-6 9.6 5.6)"/><ellipse cx="14.4" cy="5.6" rx="2.2" ry="2.8" transform="rotate(6 14.4 5.6)"/><ellipse cx="18.4" cy="9.6" rx="2.1" ry="2.7" transform="rotate(20 18.4 9.6)"/></svg>';
+  let last = null, travelled = 0, side = 1, count = 0;
+  const MAX = 28;
+  const stamp = (x, y, angle) => {
+    side = -side;
+    const off = 7 + Math.random() * 3, jit = (Math.random() - 0.5) * 16;
+    const a = angle + jit * Math.PI / 180;
+    const px = x + Math.cos(a + Math.PI / 2) * off * side + (Math.random() - 0.5) * 4;
+    const py = y + Math.sin(a + Math.PI / 2) * off * side + (Math.random() - 0.5) * 4;
+    const el = document.createElement("i");
+    el.innerHTML = PAW;
+    el.style.transform = `translate(${px - 11}px, ${py - 11}px) rotate(${(a * 180 / Math.PI + 90).toFixed(0)}deg) scale(${(0.85 + Math.random() * 0.25).toFixed(2)})`;
+    layer.appendChild(el);
+    if (++count > MAX) { const f = layer.firstChild; if (f) f.remove(); count--; }
+    setTimeout(() => { el.remove(); count = Math.max(0, count - 1); }, 1900);
+  };
+  window.addEventListener("touchstart", (e) => {
+    const t = e.touches[0]; if (!t) return;
+    last = { x: t.clientX, y: t.clientY }; travelled = 0;
+    stamp(t.clientX, t.clientY, -Math.PI / 2);
+  }, { passive: true });
+  window.addEventListener("touchmove", (e) => {
+    const t = e.touches[0]; if (!t || !last) return;
+    const dx = t.clientX - last.x, dy = t.clientY - last.y, d = Math.hypot(dx, dy);
+    travelled += d;
+    if (travelled >= 30) { stamp(t.clientX, t.clientY, Math.atan2(dy, dx)); travelled = 0; }
+    last = { x: t.clientX, y: t.clientY };
+  }, { passive: true });
+  window.addEventListener("touchend", () => { last = null; }, { passive: true });
 })();
