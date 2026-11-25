@@ -264,11 +264,13 @@
           </g>
           <ellipse cx="62" cy="62" rx="30" ry="13" fill="#050303"/>
           <ellipse cx="62" cy="57" rx="17" ry="6" fill="#241512"/>
-          <circle cx="30" cy="62" r="13" fill="#050303"/>
-          <path d="M22 72 L14 80 L26 76 Z" fill="#050303"/>
-          <path d="M34 74 L34 84 L40 74 Z" fill="#050303"/>
-          <path d="M24 60 q2.5 -2.5 5 0 M32 60 q2.5 -2.5 5 0" fill="none" stroke="#BFB2AE" stroke-width="1.3" stroke-linecap="round"/>
-          <path d="M28 66 q2 1.6 4 0" fill="none" stroke="#BFB2AE" stroke-width="1.1" stroke-linecap="round"/>
+          <g transform="rotate(-155 30 60)">
+            <circle cx="30" cy="60" r="13" fill="#050303"/>
+            <path d="M18.5 55 L18 40 L27 49.5 Z" fill="#050303"/>
+            <path d="M33 49.5 L42 40 L41.5 55 Z" fill="#050303"/>
+            <path d="M23 60 q2.5 2.2 5 0 M32 60 q2.5 2.2 5 0" fill="none" stroke="#BFB2AE" stroke-width="1.3" stroke-linecap="round"/>
+            <path d="M28 65 q1 1.2 2 0 q1 1.2 2 0" fill="none" stroke="#BFB2AE" stroke-width="1" stroke-linecap="round"/>
+          </g>
         </svg>
         <svg class="s-sleep" viewBox="0 0 120 80">
           <g class="breathe">

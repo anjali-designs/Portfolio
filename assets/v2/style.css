@@ -1108,3 +1108,7 @@ body.lb-lock { overflow: hidden; }
 .paws i { position: absolute; left: 0; top: 0; width: 22px; height: 22px; animation: pawFade 1.9s ease-out forwards; }
 .paws svg { width: 100%; height: 100%; fill: #0A0505; filter: drop-shadow(0 0 1px rgba(244, 236, 233, .35)) drop-shadow(0 0 6px rgba(255, 60, 45, .55)); }
 @keyframes pawFade { 0% { opacity: 0; } 8% { opacity: 1; } 60% { opacity: .9; } 100% { opacity: 0; } }
+
+/* Expertise scene stretches to the right edge of the content */
+.skill-panel { width: 100%; }
+.skill-panel .viz, .skill-panel .viz svg { width: 100%; max-width: none; }
