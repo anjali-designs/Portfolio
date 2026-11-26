@@ -290,7 +290,7 @@
     document.body.appendChild(cat);
     if (touchMode) {
       cat.classList.add("touch");
-      cs.x = window.innerWidth - 104; cs.y = window.innerHeight - 78;
+      cs.x = 8; cs.y = window.innerHeight - 78;
       cs.rest = "sleep"; cs.nextPose = Date.now() + 9000; cs.nextWander = Date.now() + 18000 + Math.random() * 15000;
       /* tap to pet, double tap for belly rubs */
       let lastTap = 0;
@@ -413,7 +413,7 @@
       }
       if (cs.override && now >= cs.override.until) cs.override = null;
       if (cs.override) { tx = cs.override.x; ty = cs.override.y; }
-      else if (touchMode) { tx = VW - 104; ty = VH - 78; }
+      else if (touchMode) { tx = 8; ty = VH - 78; }
       else { tx = mx < catCx ? mx + 24 : mx - 150; ty = my - 40; }
       tx = Math.max(0, Math.min(VW - 120, tx));
       ty = Math.max(70, Math.min(VH - (touchMode ? 78 : 80), ty));

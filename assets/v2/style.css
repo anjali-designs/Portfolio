@@ -991,15 +991,16 @@ body.lb-lock { overflow: hidden; }
 .hs-btn:hover { background: linear-gradient(135deg, #C42020, #4A0B10); box-shadow: 0 0 24px rgba(255, 42, 31, .5); }
 .hs-btn:disabled { opacity: .3; pointer-events: none; }
 .hscroll { position: relative; margin-top: 28px; }
-.hscroll::after { content: ""; position: absolute; top: 0; right: 0; bottom: 34px; width: 80px; background: linear-gradient(90deg, transparent, var(--ink)); pointer-events: none; transition: opacity .3s; }
+.hscroll::after { display: none; content: ""; position: absolute; top: 0; right: 0; bottom: 34px; width: 80px; background: linear-gradient(90deg, transparent, var(--ink)); pointer-events: none; transition: opacity .3s; }
 .hscroll.end::after { opacity: 0; }
 .hs-track { display: flex; gap: 16px; overflow-x: auto; scroll-snap-type: x proximity; padding-bottom: 14px; scrollbar-width: thin; scrollbar-color: rgba(244, 236, 233, .25) transparent; }
 .hs-track::-webkit-scrollbar { height: 6px; } .hs-track::-webkit-scrollbar-thumb { background: rgba(244, 236, 233, .25); border-radius: 3px; }
 .hs-track .fig { flex: none; scroll-snap-align: start; }
-.hs-track .fig a { background: #F4ECE9; cursor: zoom-in; }
+.hs-track .fig { width: min-content; display: grid; gap: 12px; }
+.hs-track .fig a { background: none; cursor: zoom-in; display: block; width: max-content; }
 .hs-track .fig img { height: clamp(260px, 32vw, 440px); width: auto; max-width: none; }
 .hs-track .fig:only-child img { height: clamp(320px, 40vw, 560px); }
-.hs-track .fig figcaption { max-width: 420px; }
+.hs-track .fig figcaption { max-width: none; width: 100%; }
 @media (max-width: 640px) { .hs-btns { display: none; } }
 
 /* Bullet points without backgrounds, site wide */
@@ -1112,3 +1113,6 @@ body.lb-lock { overflow: hidden; }
 /* Expertise scene stretches to the right edge of the content */
 .skill-panel { width: 100%; }
 .skill-panel .viz, .skill-panel .viz svg { width: 100%; max-width: none; }
+.hs-track { align-items: start; }
+.hs-track .fig { align-content: start; }
+@media (max-width: 640px) { .hs-track .fig img { height: min(66vh, 520px); } .hs-track .fig:only-child img { height: min(60vh, 460px); } }
